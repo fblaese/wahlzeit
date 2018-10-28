@@ -9,23 +9,23 @@ public class LocationTest {
 	public void testCoordinateStorage() {
 		Coordinate coordinate = new Coordinate(1,1);
 		Location location = new Location(coordinate);
-		assertTrue (location.getCoordinate() == coordinate);
+		assertTrue(location.getCoordinate() == coordinate);
 
 		location = new Location(coordinate, "Test Location");
-		assertTrue (location.getCoordinate() == coordinate);
+		assertTrue(location.getCoordinate() == coordinate);
 	}
 
 	@Test
 	public void testNameStorage() {
 		Location location = new Location(new Coordinate(1,1));
-		assertTrue (location.getName() == null);
+		assertTrue(location.getName() == null);
 
 		String name = "Test Location";
 		location.setName(name);
-		assertTrue (location.getName() == name);
+		assertTrue(location.getName() == name);
 
 		location = new Location(new Coordinate(1,1), name);
-		assertTrue (location.getName() == name);
+		assertTrue(location.getName() == name);
 	}
 
 	@Test
