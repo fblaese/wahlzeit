@@ -51,5 +51,8 @@ public class LocationTest {
 
 		location2 = new Location(new Coordinate(2,2), "Test Location");
 		assertTrue(location1.equals(location2) == false);
+
+		assertTrue(location1.equals(null) == false);
+		assertTrue(location1.equals("Test Location") == false);
 	}
 }

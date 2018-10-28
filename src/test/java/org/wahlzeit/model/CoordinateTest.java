@@ -43,6 +43,9 @@ public class CoordinateTest {
 		assertTrue (coordinate.equals(new Coordinate(49.5979, 11.0045)));
 		assertTrue (!coordinate.equals(new Coordinate(50, 11.0045)));
 		assertTrue (!coordinate.equals(new Coordinate(49.5979, 12)));
+
+		assertTrue (!coordinate.equals(null));
+		assertTrue (!coordinate.equals("Test"));
 	}
 
 	private double difference(double a, double b) {
