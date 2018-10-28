@@ -103,6 +103,11 @@ public class Photo extends DataObject {
 	/**
 	 *
 	 */
+	protected Location location;
+	
+	/**
+	 *
+	 */
 	protected PhotoStatus status = PhotoStatus.VISIBLE;
 	
 	/**
@@ -385,6 +390,21 @@ public class Photo extends DataObject {
 	 */
 	public void setTags(Tags newTags) {
 		tags = newTags;
+		incWriteCount();
+	}
+
+	/**
+	 * @methodtype get
+	 */
+	public Location getLocation() {
+		return location;
+	}
+
+	/**
+	 * @methodtype set
+	 */
+	public void setLocation(Location location) {
+		this.location = location;
 		incWriteCount();
 	}
 
