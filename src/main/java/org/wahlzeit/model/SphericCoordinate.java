@@ -1,8 +1,7 @@
 package org.wahlzeit.model;
 
-public class SphericCoordinate implements Coordinate {
+public class SphericCoordinate extends AbstractCoordinate {
 	private double phi, theta, radius;
-	private static final double EPSILON = 0.00001;
 
 	SphericCoordinate(double phi, double theta, double radius) {
 		this.phi = phi;
@@ -48,13 +47,5 @@ public class SphericCoordinate implements Coordinate {
 			return false;
 
 		return true;
-	}
-
-	public boolean equals(Object o) {
-		if (!(o instanceof Coordinate))
-			return false;
-
-		Coordinate coord = (Coordinate) o;
-		return isEqual(coord);
 	}
 }
