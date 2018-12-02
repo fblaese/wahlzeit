@@ -1,7 +1,7 @@
 package org.wahlzeit.model;
 
 public class SphericCoordinate extends AbstractCoordinate {
-	private double phi, theta, radius;
+	private final double phi, theta, radius;
 
 	/**
 	 * phi, theta and radius must be finite double values.

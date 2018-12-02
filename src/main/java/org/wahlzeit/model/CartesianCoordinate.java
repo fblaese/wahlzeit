@@ -1,7 +1,7 @@
 package org.wahlzeit.model;
 
 public class CartesianCoordinate extends AbstractCoordinate {
-	private double x, y, z;
+	private final double x, y, z;
 
 	/**
 	 * x, y and z must be finite double values.
