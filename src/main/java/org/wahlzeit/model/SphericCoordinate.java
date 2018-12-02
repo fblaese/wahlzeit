@@ -10,7 +10,12 @@ public class SphericCoordinate extends AbstractCoordinate {
 	 * radius must be positive or zero.
 	 */
 	SphericCoordinate(double phi, double theta, double radius) {
-		assertClassInvariants(phi, theta, radius);
+		if (!Double.isFinite(phi) || !Double.isFinite(theta) || !Double.isFinite(radius)) {
+			throw new IllegalArgumentException("Parameters have to be finite");
+		}
+		if (!(0 <= phi && phi < 2*Math.PI && 0 <= theta && theta <= Math.PI && radius >= 0)) {
+			throw new IllegalArgumentException("Invalid parameters");
+		}
 
 		this.phi = phi;
 		this.theta = theta;

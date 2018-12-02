@@ -7,7 +7,9 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	 * x, y and z must be finite double values.
 	 */
 	CartesianCoordinate(double x, double y, double z) {
-		assertClassInvariants(x, y, z);
+		if (!Double.isFinite(x) || !Double.isFinite(y) || !Double.isFinite(z)) {
+			throw new IllegalArgumentException("Parameters have to be finite");
+		}
 
 		this.x = x;
 		this.y = y;
