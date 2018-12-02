@@ -42,20 +42,20 @@ public class CoordinateTest {
 		assertTrue(!coordinate.equals(new SphericCoordinate(2, 1, 1)));
 		assertTrue(!coordinate.equals(new SphericCoordinate(1, 1, 2)));
 
-		coordinate = new SphericCoordinate(4, 5, 6);
-		assertTrue(coordinate.equals(new SphericCoordinate(4, 5, 6)));
-		assertTrue(!coordinate.equals(new SphericCoordinate(5, 6, 7)));
-		assertTrue(!coordinate.equals(new SphericCoordinate(6, 5, 4)));
+		coordinate = new SphericCoordinate(4, 2, 6);
+		assertTrue(coordinate.equals(new SphericCoordinate(4, 2, 6)));
+		assertTrue(!coordinate.equals(new SphericCoordinate(5, 2, 7)));
+		assertTrue(!coordinate.equals(new SphericCoordinate(6, 3, 4)));
 
-		coordinate = new SphericCoordinate(-4, -4, 5);
-		assertTrue(coordinate.equals(new SphericCoordinate(-4, -4, 5)));
-		assertTrue(!coordinate.equals(new SphericCoordinate(-4, 4, 5)));
-		assertTrue(!coordinate.equals(new SphericCoordinate(4, -4, 5)));
+		coordinate = new SphericCoordinate(2, 0, 5);
+		assertTrue(coordinate.equals(new SphericCoordinate(2, 0, 5)));
+		assertTrue(!coordinate.equals(new SphericCoordinate(0, 2, 5)));
+		assertTrue(!coordinate.equals(new SphericCoordinate(2, 3, 0)));
 
-		coordinate = new SphericCoordinate(49.5979, 11.0045, 9.1034);
-		assertTrue(coordinate.equals(new SphericCoordinate(49.5979, 11.0045, 9.1034)));
-		assertTrue(!coordinate.equals(new SphericCoordinate(50, 11.0045, 9.1034)));
-		assertTrue(!coordinate.equals(new SphericCoordinate(49.5979, 12, 9.1034)));
+		coordinate = new SphericCoordinate(2.5979, 1.0045, 9.1034);
+		assertTrue(coordinate.equals(new SphericCoordinate(2.5979, 1.0045, 9.1034)));
+		assertTrue(!coordinate.equals(new SphericCoordinate(0, 1.0045, 9.1034)));
+		assertTrue(!coordinate.equals(new SphericCoordinate(1.5979, 2, 9.1034)));
 
 		assertTrue(!coordinate.equals(null));
 		assertTrue(!coordinate.equals("Test"));
@@ -69,20 +69,20 @@ public class CoordinateTest {
 		assertTrue(!coordinate.isEqual(new SphericCoordinate(2, 1, 1)));
 		assertTrue(!coordinate.isEqual(new SphericCoordinate(1, 1, 2)));
 
-		coordinate = new SphericCoordinate(4, 5, 6);
-		assertTrue(coordinate.isEqual(new SphericCoordinate(4, 5, 6)));
-		assertTrue(!coordinate.isEqual(new SphericCoordinate(5, 6, 7)));
-		assertTrue(!coordinate.isEqual(new SphericCoordinate(6, 5, 4)));
+		coordinate = new SphericCoordinate(4, 2, 6);
+		assertTrue(coordinate.isEqual(new SphericCoordinate(4, 2, 6)));
+		assertTrue(!coordinate.isEqual(new SphericCoordinate(5, 3, 7)));
+		assertTrue(!coordinate.isEqual(new SphericCoordinate(6, 1, 4)));
 
-		coordinate = new SphericCoordinate(-4, -4, 5);
-		assertTrue(coordinate.isEqual(new SphericCoordinate(-4, -4, 5)));
-		assertTrue(!coordinate.isEqual(new SphericCoordinate(-4, 4, 5)));
-		assertTrue(!coordinate.isEqual(new SphericCoordinate(4, -4, 5)));
+		coordinate = new SphericCoordinate(0, 3, 5);
+		assertTrue(coordinate.isEqual(new SphericCoordinate(0, 3, 5)));
+		assertTrue(!coordinate.isEqual(new SphericCoordinate(4, 0, 5)));
+		assertTrue(!coordinate.isEqual(new SphericCoordinate(4, 3, 5)));
 
-		coordinate = new SphericCoordinate(49.5979, 11.0045, 9.1034);
-		assertTrue(coordinate.isEqual(new SphericCoordinate(49.5979, 11.0045, 9.1034)));
-		assertTrue(!coordinate.isEqual(new SphericCoordinate(50, 11.0045, 9.1034)));
-		assertTrue(!coordinate.isEqual(new SphericCoordinate(49.5979, 12, 9.1034)));
+		coordinate = new SphericCoordinate(4.5979, 1.0045, 9.1034);
+		assertTrue(coordinate.isEqual(new SphericCoordinate(4.5979, 1.0045, 9.1034)));
+		assertTrue(!coordinate.isEqual(new SphericCoordinate(5.0, 1.0045, 9.1034)));
+		assertTrue(!coordinate.isEqual(new SphericCoordinate(4.5979, 1.2, 9.1034)));
 
 		// Test with different Coordinate Implementations
 		Coordinate coordinate1 = new SphericCoordinate(2, 1, 4);
