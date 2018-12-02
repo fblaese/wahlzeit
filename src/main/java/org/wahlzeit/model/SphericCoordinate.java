@@ -5,15 +5,15 @@ public class SphericCoordinate extends AbstractCoordinate {
 
 	/**
 	 * phi, theta and radius must be finite double values.
-	 * phi must be inside [0;2*pi[
-	 * theta must be inside [0;pi]
+	 * phi must be inside [0;pi]
+	 * theta must be inside (-pi;+pi]
 	 * radius must be positive or zero.
 	 */
 	SphericCoordinate(double phi, double theta, double radius) {
 		if (!Double.isFinite(phi) || !Double.isFinite(theta) || !Double.isFinite(radius)) {
 			throw new IllegalArgumentException("Parameters have to be finite");
 		}
-		if (!(0 <= phi && phi < 2*Math.PI && 0 <= theta && theta <= Math.PI && radius >= 0)) {
+		if (!(0 <= phi && phi <= Math.PI && -Math.PI < theta && theta <= Math.PI && radius >= 0)) {
 			throw new IllegalArgumentException("Invalid parameters");
 		}
 
@@ -73,8 +73,8 @@ public class SphericCoordinate extends AbstractCoordinate {
 		assert Double.isFinite(theta);
 		assert Double.isFinite(radius);
 
-		assert 0 <= phi && phi < 2 * Math.PI;
-		assert 0 <= theta && theta <= Math.PI;
+		assert 0 <= phi && phi <= Math.PI;
+		assert -Math.PI < theta && theta <= Math.PI;
 		assert 0 <= radius;
 	}
 }

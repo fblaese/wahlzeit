@@ -38,17 +38,16 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
 	@Override
 	public SphericCoordinate asSphericCoordinate() {
-		double phi = Math.atan(Math.sqrt(x*x + y*y) / z);
-		double theta = Math.atan(y / x);
+		// border case where angles are undefined
+		if (x == 0 && y == 0 && z == 0)
+			return new SphericCoordinate(0, 0, 0);
+
+		System.out.println("x: " + x + ", y: " + y + ", z: " + z);
+
 		double radius = Math.sqrt(x*x + y*y + z*z);
-
-		while(phi < 0) {
-			phi += Math.PI;
-		}
-
-		while(theta < 0) {
-			theta += Math.PI;
-		}
+		double phi = Math.acos(z / radius);
+		double theta = Math.atan2(y, x);
+		System.out.println("phi: " + phi + ", theta: " + theta + ", radius: " + radius);
 
 		return new SphericCoordinate(phi, theta, radius);
 	}
