@@ -7,6 +7,8 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		this.x = x;
 		this.y = y;
 		this.z = z;
+
+		assertClassInvariants();
 	}
 
 	@Override
@@ -60,5 +62,15 @@ public class CartesianCoordinate extends AbstractCoordinate {
 			return false;
 
 		return true;
+	}
+
+	protected void assertClassInvariants() {
+		assertClassInvariants(x, y, z);
+	}
+
+	private void assertClassInvariants(double x, double y, double z) {
+		assert Double.isFinite(x);
+		assert Double.isFinite(y);
+		assert Double.isFinite(z);
 	}
 }
