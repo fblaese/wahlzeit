@@ -4,6 +4,8 @@ public class SphericCoordinate extends AbstractCoordinate {
 	private double phi, theta, radius;
 
 	SphericCoordinate(double phi, double theta, double radius) {
+		assertClassInvariants(phi, theta, radius);
+
 		this.phi = phi;
 		this.theta = theta;
 		this.radius = radius;
