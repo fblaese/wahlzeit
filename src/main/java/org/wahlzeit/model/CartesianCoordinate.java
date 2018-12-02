@@ -3,6 +3,9 @@ package org.wahlzeit.model;
 public class CartesianCoordinate extends AbstractCoordinate {
 	private double x, y, z;
 
+	/**
+	 * x, y and z must be finite double values.
+	 */
 	CartesianCoordinate(double x, double y, double z) {
 		assertClassInvariants(x, y, z);
 

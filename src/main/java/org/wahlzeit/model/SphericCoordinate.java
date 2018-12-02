@@ -3,6 +3,12 @@ package org.wahlzeit.model;
 public class SphericCoordinate extends AbstractCoordinate {
 	private double phi, theta, radius;
 
+	/**
+	 * phi, theta and radius must be finite double values.
+	 * phi must be inside [0;2*pi[
+	 * theta must be inside [0;pi]
+	 * radius must be positive or zero.
+	 */
 	SphericCoordinate(double phi, double theta, double radius) {
 		assertClassInvariants(phi, theta, radius);
 
