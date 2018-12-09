@@ -41,7 +41,7 @@ public class Location {
 		Location loc = (Location) o;
 		if (!(loc.coordinate.equals(this.coordinate)))
 			return false;
-		if (!(loc.name.equals(this.name)))
+		if ((loc.name != this.name) && !(loc.name.equals(this.name)))
 			return false;
 
 		return true;
