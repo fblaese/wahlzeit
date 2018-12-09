@@ -13,6 +13,10 @@ public class BirdPhoto extends Photo {
 	}
 
 	public BirdPhoto(Bird bird) {
+		if (bird == null) {
+			throw new IllegalArgumentException();
+		}
+
 		super();
 		this.bird = bird;
 	}
@@ -22,6 +26,10 @@ public class BirdPhoto extends Photo {
 	}
 
 	public void setBird(Bird bird) {
+		if (bird == null) {
+			throw new IllegalArgumentException();
+		}
+
 		this.bird = bird;
 	}
 }

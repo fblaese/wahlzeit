@@ -5,11 +5,20 @@ public class Location {
 	protected String name;
 
 	Location(Coordinate coordinate) {
+		if (coordinate == null) {
+			throw new IllegalArgumentException("null is not a valid location coordinate");
+		}
+
 		this.coordinate = coordinate;
 	}
 
 	Location(Coordinate coordinate, String name) {
 		this(coordinate);
+
+		if (name == null) {
+			throw new IllegalArgumentException("null is not a valid location name");
+		}
+
 		this.name = name;
 	}
 
