@@ -1,6 +1,46 @@
 package org.wahlzeit.model;
 
+import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * class to store properties for SphericCoordinates for
+ * comparison and hashing.
+ */
+class SphericProp {
+	private final double phi, theta, radius;
+
+	public SphericProp(double phi, double theta, double radius) {
+		this.phi = phi;
+		this.theta = theta;
+		this.radius = radius;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof SphericProp)) return false;
+
+		SphericProp prop = (SphericProp) o;
+		final double EPSILON = AbstractCoordinate.EPSILON;
+
+		if (Math.abs(phi - prop.phi) > EPSILON)
+			return false;
+		if (Math.abs(theta - prop.theta) > EPSILON)
+			return false;
+		if (Math.abs(radius - prop.radius) > EPSILON)
+			return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(phi, theta, radius);
+	}
+}
+
 public class SphericCoordinate extends AbstractCoordinate {
+	private static ConcurrentHashMap<SphericProp, SphericCoordinate> instances = new ConcurrentHashMap<>();
 	private final double phi, theta, radius;
 
 	/**
@@ -9,7 +49,15 @@ public class SphericCoordinate extends AbstractCoordinate {
 	 * theta must be inside (-pi;+pi]
 	 * radius must be positive or zero.
 	 */
-	SphericCoordinate(double phi, double theta, double radius) {
+	private SphericCoordinate(double phi, double theta, double radius) {
+		this.phi = phi;
+		this.theta = theta;
+		this.radius = radius;
+
+		assertClassInvariants();
+	}
+
+	public static SphericCoordinate createCoordinate(double phi, double theta, double radius) {
 		if (!Double.isFinite(phi) || !Double.isFinite(theta) || !Double.isFinite(radius)) {
 			throw new IllegalArgumentException("Parameters have to be finite");
 		}
@@ -17,11 +65,17 @@ public class SphericCoordinate extends AbstractCoordinate {
 			throw new IllegalArgumentException("Invalid parameters");
 		}
 
-		this.phi = phi;
-		this.theta = theta;
-		this.radius = radius;
+		SphericProp prop = new SphericProp(phi, theta, radius);
 
-		assertClassInvariants();
+		// return existing coordinate if possible
+		if (instances.contains(prop)) {
+			return instances.get(prop);
+		}
+
+		// create new otherwise
+		SphericCoordinate created = new SphericCoordinate(phi, theta, radius);
+		instances.put(prop, created);
+		return created;
 	}
 
 	@Override
@@ -30,7 +84,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 		double y = radius * Math.sin(phi) * Math.sin(theta);
 		double z = radius * Math.cos(phi);
 
-		return new CartesianCoordinate(x, y, z);
+		return CartesianCoordinate.createCoordinate(x, y, z);
 	}
 
 	@Override
