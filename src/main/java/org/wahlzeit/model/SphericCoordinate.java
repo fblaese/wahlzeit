@@ -3,10 +3,25 @@ package org.wahlzeit.model;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.wahlzeit.utils.PatternInstance;
+
 /**
  * class to store properties for SphericCoordinates for
  * comparison and hashing.
  */
+@PatternInstance(
+	patternName = "Flyweight",
+	participants = {
+		"Flyweight",
+		"FlyweightFactory"
+	}
+)
+@PatternInstance(
+	patternName = "Template",
+	participants = {
+		"AbstractClass"
+	}
+)
 class SphericProp {
 	private final double phi, theta, radius;
 

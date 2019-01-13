@@ -3,10 +3,25 @@ package org.wahlzeit.model;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.wahlzeit.utils.PatternInstance;
+
 /**
  * class to store properties for CartesianCoordinates for
  * comparison and hashing.
  */
+@PatternInstance(
+	patternName = "Flyweight",
+	participants = {
+		"Flyweight",
+		"FlyweightFactory"
+	}
+)
+@PatternInstance(
+	patternName = "Template",
+	participants = {
+		"AbstractClass"
+	}
+)
 class CartesianProp {
 	private final double x, y, z;
 
