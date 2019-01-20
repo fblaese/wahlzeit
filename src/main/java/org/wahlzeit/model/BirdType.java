@@ -1,13 +1,15 @@
 package org.wahlzeit.model;
 
-public class Bird {
+public class BirdType {
 
 	protected String name;
 	protected String scientificName;
 	protected int size;   // typical, centimeters
 	protected int weight; // typical, grams
 
-	public Bird(String name, int size, int weight) {
+	protected BirdType superType = null;
+
+	public BirdType(String name, int size, int weight) {
 		if (name == null) {
 			throw new IllegalArgumentException("null is not a valid name.");
 		}
@@ -21,14 +23,34 @@ public class Bird {
 		this.weight = weight;
 	}
 
-	public Bird(String name, String scientificName, int size, int weight) {
-		new Bird(name, size, weight);
+	public BirdType(String name, String scientificName, int size, int weight) {
+		new BirdType(name, size, weight);
 
 		if (scientificName == null) {
 			throw new IllegalArgumentException("null is not a valid scientific name.");
 		}
 
 		this.scientificName = scientificName;
+	}
+
+	public boolean isSubtype(BirdType t) {
+		BirdType tmp = this;
+		while (tmp != null) {
+			if (tmp == t)
+				return true;
+
+			tmp = tmp.getSuperType();
+		}
+
+		return false;
+	}
+
+	public BirdType getSuperType() {
+		return superType;
+	}
+
+	public void setSuperType(BirdType superType) {
+		this.superType = superType;
 	}
 
 	public String getName() {
